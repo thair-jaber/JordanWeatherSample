@@ -22,7 +22,7 @@ This project is based on [WorldWeatherOnline](https://www.worldweatheronline.com
 
 ```local.properties
 // local.properties
-api_token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+api-key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 
