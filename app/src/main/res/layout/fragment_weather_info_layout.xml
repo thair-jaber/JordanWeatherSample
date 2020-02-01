@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.sample.jordanweather.ui.weather.WeatherViewModel" />
+
+        <import type="com.sample.jordanweather.models.Resource.Status" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <include
+            android:id="@+id/progress"
+            layout="@layout/progress_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:visible="@{vm.weatherInfo.status == Status.LOADING}" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{String.format(@string/observation_time, vm.weatherInfo.data.observationTime)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progress"
+            tools:text="Observation time : " />
+
+        <TextView
+            android:id="@+id/tv_feels_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="@{String.format(@string/feels_like, vm.weatherInfo.data.feelsLikeC)}"
+            app:layout_constraintStart_toStartOf="@id/tv_current_temp"
+            app:layout_constraintTop_toBottomOf="@id/tv_weather_desc" />
+
+        <TextView
+            android:id="@+id/tv_wind_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/wind_speed, vm.weatherInfo.data.windspeedKmph)}"
+            app:layout_constraintStart_toStartOf="@id/tv_feels_like"
+            app:layout_constraintTop_toBottomOf="@id/tv_feels_like" />
+
+
+        <TextView
+            android:id="@+id/tv_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/humidity, vm.weatherInfo.data.humidity)}"
+            app:layout_constraintStart_toStartOf="@id/tv_wind_speed"
+            app:layout_constraintTop_toBottomOf="@id/tv_wind_speed" />
+
+        <TextView
+            android:id="@+id/tv_pressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/pressure, vm.weatherInfo.data.pressure)}"
+            app:layout_constraintStart_toStartOf="@id/tv_humidity"
+            app:layout_constraintTop_toBottomOf="@id/tv_humidity" />
+
+        <ImageView
+            loadImage="@{vm.weatherInfo.data.weatherIconUrl}"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toTopOf="@id/tv_current_temp"
+            app:layout_constraintEnd_toEndOf="@id/tv_current_temp" />
+
+        <TextView
+            android:id="@+id/tv_current_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minWidth="200dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="@{vm.weatherInfo.data.tempC}"
+            android:textColor="@android:color/black"
+            android:textSize="90sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="20" />
+
+        <TextView
+            android:id="@+id/tv_weather_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{vm.weatherInfo.data.weatherDesc}"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_current_temp"
+            tools:text="Weather desc here" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

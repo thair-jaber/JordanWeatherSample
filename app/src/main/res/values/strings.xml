@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">JordanWeather</string>
+    <string name="select_city">Select city to show weather forecast</string>
+    <string name="feels_like">Feels like : %1$s</string>
+    <string name="observation_time">Observation Time : %1$s</string>
+    <string name="wind_speed">Wind speed (Kmph) : %1$s</string>
+    <string name="humidity">Humidity : %1$s</string>
+    <string name="pressure">Pressure : %1$s</string>
+</resources>
