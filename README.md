@@ -1,5 +1,5 @@
 # Jordan weather
-This is a sample android app using https://www.worldweatheronline.com/developer/ apis to show current weather in Jordan cities.
+This is a sample android app using [WorldWeatherOnline](https://www.worldweatheronline.com/developer/) apis to show current weather in Jordan cities.
 
 I've used the following libraries:
 
